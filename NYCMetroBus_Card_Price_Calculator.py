@@ -10,15 +10,20 @@ def im_working():
     time.sleep(1)
     print()
 
-def no_mystake():
+def no_mistake():
     print("You must type y for Yes or n for No. ")
 
-def  no_mystake_1():
+def  no_mistake_1():
     print("You must type Continue or Exit. ")
 
+def  no_mistake_2():
+    print("You must type Continue or Exit. ")
+
+# This function creates random 3 number of 8 digit number card. The other 5 are hidden by * for privacy issue.
 def get_card_number_end ():
     return str(random.randint(1, 999)).zfill(3)
 
+# This function asks the user to insert a valide amount of money.
 def add_money():    
     while True:
         try:
@@ -38,6 +43,8 @@ def add_money():
             break
     return insert_money
 
+# This function shows to the user how many money needs to insert to by the choosed ticket. 
+# It shows the differents between the money in the Metro Card and the price of the ticket.
 def ask_money(money, price):
     need_money = round ((money - price), 2)
     im_working()
@@ -50,6 +57,7 @@ def ask_money(money, price):
     money += money_inserted
     return money
 
+# This function calculates if the user insert enough money to update the balance in the Metro card and buy the choosed ticket.
 def enough_money (money, price):
     while money < price:
         money = ask_money(money, price)
@@ -57,6 +65,7 @@ def enough_money (money, price):
     print('You have enough money to purchase the ticket.')
     return money - price
 
+# This function shows to the user how many money needs to insert to by the choosed ticket. 
 def ticket_option():
     im_working()
     print('Please, choose one of the following option:')
@@ -69,6 +78,9 @@ def ticket_option():
     print(' 7-Day Unlimited Express Bus Plus MetroCard.')
     im_working()
     ticket_choosed = input('Wich ticket would you like to by? use only the number: ')
+    while ticket_choosed != int:
+        no_mistake_2()
+        ticket_choosed = input('Wich ticket would you like to by? use only the number: ')
     ticket_choosed = int(ticket_choosed)
     ticket = TICKET_LIST[ticket_choosed]
     im_working()
@@ -81,7 +93,7 @@ def buy_ticket(money_inside):
     im_working()
     buy_ticket = input('Would you like to by a ticket? y/n ').lower()
     while buy_ticket != 'y' and buy_ticket != 'n':
-        no_mystake()
+        no_mistake()
         buy_ticket = input().lower()
     if buy_ticket == 'y':
         ticket, ticket_choosed, right_ticket = ticket_option()
@@ -137,7 +149,7 @@ im_working()
 print('Do you have a MetroBus Card? y/n')
 metro_card = input().lower()
 while metro_card != 'y' and metro_card != 'n':
-    no_mystake()
+    no_mistake()
     metro_card = input().lower()
 if metro_card == 'y':
     card_number, money_inside, ticket_inside = init_metrocard()
@@ -147,7 +159,7 @@ else:
     im_working()
     no_card = input ('Would you like to by a new one for the price of 1$? y/n' ).lower()
     while no_card != 'y' and no_card != 'n':
-        no_mystake()
+        no_mistake()
         no_card = input().lower()
     if no_card == 'y':
         im_working()
@@ -176,7 +188,7 @@ else:
         no_Single_rise = input ('Do you want procede to buy a Single Ride Ticket? y/n ' ).lower()
         price = 3.25
         while no_Single_rise != 'y' and no_Single_rise != 'n':
-            no_mystake()
+            no_mistake()
             no_Single_rise = input().lower()
         if no_Single_rise == 'y':
             im_working()
@@ -196,12 +208,9 @@ else:
         im_working()
 next = input('What would you like to do? Continue or Exit ').lower()
 while next != 'continue' and next != 'exit':
-    no_mystake_1()
+    no_mistake_1()
     next = input().lower()
 if next == 'continue':
     start(card_number, money_inside, ticket_inside)
     im_working()
 print('Thank you to use our Vending Machine. See you in the next trip! Have a Safe Journey.')
-
-
-    
