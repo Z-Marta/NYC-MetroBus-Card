@@ -13,11 +13,11 @@ def im_working():
 def no_mistake():
     print("You must type y for Yes or n for No. ")
 
-def  no_mistake_1():
+def no_mistake_1():
     print("You must type Continue or Exit. ")
 
-def  no_mistake_2():
-    print("You must type Continue or Exit. ")
+def no_mistake_2():
+    print("You must type a number between 1 and 5. ")
 
 # This function creates random 3 number of 8 digit number card. The other 5 are hidden by * for privacy issue.
 def get_card_number_end ():
@@ -72,37 +72,37 @@ def ticket_option():
     im_working()
     print(TICKET_LIST)
     im_working()
-    print('You get a free trasfer from the subway to a bus, bus to subway, or bus to bus. If you transfer')
+    print('You get a free trasfer from the subway to a bus, bus to subway, or bus to bus.')
     im_working()
-    print('If you transfer from  the subway or local bus to an express bus, you\'ll be charged the difference between the subway or bus fare and the express bus fare unless you have a')
-    print(' 7-Day Unlimited Express Bus Plus MetroCard.')
+    print('If you transfer from  the subway or local bus to an express bus, you\'ll be charged the difference between the subway or bus fare and the express bus fare unless you have a 7-Day Unlimited Express Bus Plus MetroCard.')
     im_working()
-    ticket_choosed = input('Wich ticket would you like to by? use only the number: ')
-    while ticket_choosed != int:
+    ticket_chosen = input('Wich ticket would you like to by? use only the number: ')
+    while ticket_chosen != int or int(ticket_chosen) > 5 or int(ticket_chosen) == 0:
         no_mistake_2()
-        ticket_choosed = input('Wich ticket would you like to by? use only the number: ')
-    ticket_choosed = int(ticket_choosed)
-    ticket = TICKET_LIST[ticket_choosed]
+        ticket_chosen = input('Wich ticket would you like to by? use only the number: ')
+    ticket_chosen = int(ticket_chosen)
+    ticket = TICKET_LIST[ticket_chosen]
     im_working()
     print(f'You choosed the option: {ticket}')
     im_working()
     right_ticket = input(f'Do you want to buy the {ticket} ticket? y/n ').lower()
-    return ticket, ticket_choosed, right_ticket
-    
+    return ticket, ticket_chosen, right_ticket
+
+# This function returns the money inside the metrobus card and the ticket bought. It calls the functions 'ask_money' and 'enough_money'   
 def buy_ticket(money_inside):
     im_working()
-    buy_ticket = input('Would you like to by a ticket? y/n ').lower()
+    buy_ticket = input('Would you like to buy a ticket? y/n ').lower()
     while buy_ticket != 'y' and buy_ticket != 'n':
         no_mistake()
         buy_ticket = input().lower()
     if buy_ticket == 'y':
-        ticket, ticket_choosed, right_ticket = ticket_option()
+        ticket, ticket_chosen, right_ticket = ticket_option()
         
         while right_ticket == 'n':
-            ticket, ticket_choosed, right_ticket = ticket_option()
+            ticket, ticket_chosen, right_ticket = ticket_option()
         
-        price = TICKET_PRICE[ticket_choosed]
-        if ticket_choosed == 1:
+        price = TICKET_PRICE[ticket_chosen]
+        if ticket_chosen == 1:
             price = 5.80
             im_working()
             print('To buy this ticket, you need to have minimum $5.80 .')
@@ -123,7 +123,7 @@ def buy_ticket(money_inside):
         print('You didn\'t buy any new ticket in this transaction.')
         return money_inside, 'No Ticket'
         
-
+# This function initialize the metrobus card at the biggining of the program, randomly choose the end of the number and the money inside the card. 
 def init_metrocard ():
     im_working()
     print('please insert your card.')
@@ -133,7 +133,8 @@ def init_metrocard ():
     money_inside = round(random.uniform(0,50), 2)
     ticket_inside = 'No ticket'
     return card_number, money_inside, ticket_inside
-    
+
+# This function shows to the user the attribute of their card: money, ticket and card number.    
 def start(card_number, money_inside, ticket_inside):
     im_working()
     print(f'This are the information about the MetroCard # *****{card_number}:')
@@ -142,7 +143,8 @@ def start(card_number, money_inside, ticket_inside):
     im_working()
     print(f'Ticket Available to use: {ticket_inside}')
 
-'''begginning of the program'''   
+#begginning of the program  
+
 im_working()     
 print('Welcome to the Vending Machine in the Canal Street Station.')
 im_working()
