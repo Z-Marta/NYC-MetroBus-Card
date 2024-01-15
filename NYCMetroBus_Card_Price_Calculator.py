@@ -185,7 +185,8 @@ else:
         money_inside, ticket_inside = buy_ticket(money_inside)   
     else:
         im_working()
-        print('Is it possible to buy just a Single Ride Fair. A Single Ride Card is not refillable and you can use once. Ask to the drive to a Paper Transfer on the first bus you bord if you want to transfer betweens buses.')
+        print('Is it possible to buy just a Single Ride Fair. A Single Ride Card is not refillable and you can use once.') 
+        print('Ask to the drive to a Paper Transfer on the first bus you bord if you want to transfer betweens buses.')
         im_working()
         no_Single_rise = input ('Do you want procede to buy a Single Ride Ticket? y/n ' ).lower()
         price = 3.25
