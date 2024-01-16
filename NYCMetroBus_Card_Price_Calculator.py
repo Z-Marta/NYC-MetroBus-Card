@@ -48,7 +48,7 @@ def add_money():
             im_working()
             print("Please, try again.")            
             continue
-        if insert_money < 0:
+        if insert_money <= 0:
             im_working()
             print("Sorry, we cannot process this request.")
             im_working()
@@ -205,15 +205,14 @@ else:
         card_number, money_inside, ticket_inside = init_metrocard(new_card = 'y')
         im_working()
         print('New NYC MetroBub Card need to be a balance of at least 5.80$, the price for 2 Base Fare as Pay-As-You-Go.')
-        price = 5.80                
-        while money_inside < price:
+        price = 5.80         
+        while money_inside < 5.80:
             money_inside = ask_money(money_inside, price)
-            money_inside -= price
-            price -= money_inside 
+
         im_working()
         print(f'This are the information about the MetroCard # *****{card_number}:')
         im_working()
-        print(f'Money Available: {money_inside} $')
+        print(f'Money Available: {round(money_inside, 2)} $')
         im_working()
         print(f'Ticket Available to use: {ticket_inside}')
         im_working()
