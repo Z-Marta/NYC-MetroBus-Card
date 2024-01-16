@@ -74,14 +74,30 @@ def ticket_option():
     im_working()
     print('You get a free trasfer from the subway to a bus, bus to subway, or bus to bus.')
     im_working()
-    print('If you transfer from  the subway or local bus to an express bus, you\'ll be charged the difference between the subway or bus fare and the express bus fare unless you have a 7-Day Unlimited Express Bus Plus MetroCard.')
+    print('If you transfer from  the subway or local bus to an express bus,')
+    print('you\'ll be charged the difference between the subway or bus fare and the express bus fare unless you have a 7-Day Unlimited Express Bus Plus MetroCard.')
     im_working()
-    ticket_chosen = input('Wich ticket would you like to by? use only the number: ')
-    while ticket_chosen != int or int(ticket_chosen) > 5 or int(ticket_chosen) == 0:
-        no_mistake_2()
-        ticket_chosen = input('Wich ticket would you like to by? use only the number: ')
-    ticket_chosen = int(ticket_chosen)
-    ticket = TICKET_LIST[ticket_chosen]
+    
+    while True:
+        try:
+            ticket_chosen = int(input('Wich ticket would you like to by? use only the number: '))
+            ticket = TICKET_LIST[ticket_chosen]
+
+        except KeyError:
+            im_working()
+            no_mistake_2()
+            im_working() 
+            continue
+
+        except ValueError:
+            im_working()
+            no_mistake_2()
+            im_working()        
+            continue
+        
+        else:
+            break
+    
     im_working()
     print(f'You choosed the option: {ticket}')
     im_working()
@@ -126,7 +142,7 @@ def buy_ticket(money_inside):
 # This function initialize the metrobus card at the biggining of the program, randomly choose the end of the number and the money inside the card. 
 def init_metrocard ():
     im_working()
-    print('please insert your card.')
+    print('Please insert your card.')
     im_working()
     print('Reading...')
     card_number = get_card_number_end()
