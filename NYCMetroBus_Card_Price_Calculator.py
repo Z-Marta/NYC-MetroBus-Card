@@ -6,6 +6,20 @@ import time
 TICKET_LIST = {1:'Base Fare = $2.90', 2:'Express Bus Fare = $7.00', 3: '7-Day Unlimeted = $34', 4: '7-Day Express Bus Plus = $64', 5: '30-Day Unlimited Fare = $132'}
 TICKET_PRICE = {1 : 2.90, 2 : 7.00, 3 : 34.00, 4 : 64.00, 5 : 132.00}
 
+def welcome_text():
+    print(
+'''.      .  ______  _______   ____     _______     _______               ____     ______
+|\    /| |           |     |    \   |       |   |             /\      |    \   |      \\
+| \  / | |           |     |     |  |       |   |            /  \     |     |  |       \\
+|  \/  | |_____      |     |____/   |       |   |           /    \    |____/   |        |
+|      | |           |     |\       |       |   |          /______\   |\       |        |
+|      | |           |     |  \     |       |   |         /        \  |  \     |       /
+|      | |______     |     |    \   |_______|   |_______ /          \ |    \   |______/
+
+                                    by Marta.Z                                     
+    ''')
+    time.sleep(1.2)
+
 def im_working():
     time.sleep(1)
     print()
@@ -114,7 +128,7 @@ def buy_ticket(money_inside):
     if buy_ticket == 'y':
         ticket, ticket_chosen, right_ticket = ticket_option()
         
-        while right_ticket == 'n':
+        while right_ticket != 'y' and right_ticket != 'yes':
             ticket, ticket_chosen, right_ticket = ticket_option()
         
         price = TICKET_PRICE[ticket_chosen]
@@ -140,13 +154,16 @@ def buy_ticket(money_inside):
         return money_inside, 'No Ticket'
         
 # This function initialize the metrobus card at the biggining of the program, randomly choose the end of the number and the money inside the card. 
-def init_metrocard ():
+def init_metrocard (new_card):
     im_working()
     print('Please insert your card.')
     im_working()
     print('Reading...')
     card_number = get_card_number_end()
-    money_inside = round(random.uniform(0,50), 2)
+    if new_card == 'y':
+        money_inside = 0
+    else:
+        money_inside = round(random.uniform(0,50), 2)
     ticket_inside = 'No ticket'
     return card_number, money_inside, ticket_inside
 
@@ -161,6 +178,7 @@ def start(card_number, money_inside, ticket_inside):
 
 #begginning of the program  
 
+welcome_text()
 im_working()     
 print('Welcome to the Vending Machine in the Canal Street Station.')
 im_working()
@@ -170,12 +188,12 @@ while metro_card != 'y' and metro_card != 'n':
     no_mistake()
     metro_card = input().lower()
 if metro_card == 'y':
-    card_number, money_inside, ticket_inside = init_metrocard()
+    card_number, money_inside, ticket_inside = init_metrocard(new_card = 'n')
     start(card_number, money_inside, ticket_inside)
     money_inside, ticket_inside = buy_ticket(money_inside)
 else:
     im_working()
-    no_card = input ('Would you like to by a new one for the price of 1$? y/n' ).lower()
+    no_card = input ('Would you like to by a new one for the price of 1$? y/n ' ).lower()
     while no_card != 'y' and no_card != 'n':
         no_mistake()
         no_card = input().lower()
@@ -183,14 +201,15 @@ else:
         im_working()
         print('Confirming transaction...')
         im_working()
-        print('Transaction confirmed. Thank you for purching a New MYC MetroBub Card.')
-        card_number, money_inside, ticket_inside = init_metrocard()
+        print('Transaction confirmed. Thank you for purching a New NYC MetroBub Card.')
+        card_number, money_inside, ticket_inside = init_metrocard(new_card = 'y')
         im_working()
-        print('New MYC MetroBub Card need to be a balance of at least 5.80$, the price for 2 Base Fare as Pay-As-You-Go.')
+        print('New NYC MetroBub Card need to be a balance of at least 5.80$, the price for 2 Base Fare as Pay-As-You-Go.')
         price = 5.80                
         while money_inside < price:
             money_inside = ask_money(money_inside, price)
             money_inside -= price
+            price -= money_inside 
         im_working()
         print(f'This are the information about the MetroCard # *****{card_number}:')
         im_working()
@@ -219,12 +238,14 @@ else:
             im_working()
             print('Thank you to choose us.')
         else:
-            print('Your selection is not valid. Please, select a valide option.')
+            im_working()
+            print('You choose to not by a MetroCard, you didn\'t present a Metrocard or you didn\'t buy any tickets.')
             im_working()
         card_number = 'No MetroCard purchaced'
         money_inside = 0
         ticket_inside = 'Single Ride Fair'
         im_working()
+im_working()
 next = input('What would you like to do? Continue or Exit ').lower()
 while next != 'continue' and next != 'exit':
     no_mistake_1()
