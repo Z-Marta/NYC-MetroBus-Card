@@ -229,20 +229,24 @@ else:
         if no_Single_rise == 'y':
             im_working()
             print('The ticket cost 3.25$ . Please, insert the money')
-            money = add_money()
-            enough_money(money, price)
+            money = 0
+            while money < 3.25:
+                money = add_money()
+                enough_money(money, price)
             im_working()
-            print('you bought a single Ride Ticket. Please, don\'t forget to collect the item in the slot bihind.')
+            print('you bought a Single Ride Ticket. Please, don\'t forget to collect the item in the slot bihind.')
             im_working()
             print('Thank you to choose us.')
+            card_number = 'No MetroCard purchaced'
+            money_inside = 0
+            ticket_inside = 'Single Ride Fair'
         else:
             im_working()
             print('You choose to not by a MetroCard, you didn\'t present a Metrocard or you didn\'t buy any tickets.')
             im_working()
-        card_number = 'No MetroCard purchaced'
-        money_inside = 0
-        ticket_inside = 'Single Ride Fair'
-        im_working()
+            card_number = 'No MetroCard purchaced'
+            money_inside = 0
+            ticket_inside = 'No Ticket Purchase'
 im_working()
 next = input('What would you like to do? Continue or Exit ').lower()
 while next != 'continue' and next != 'exit':
