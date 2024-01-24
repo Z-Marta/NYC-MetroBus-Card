@@ -20,12 +20,12 @@ alt="Invalide input insert in the Terminal ">
 
 ## How to use
 ### Installation
-1. Clone the repository:
+1. Clone the repository: <br />
 `git clone https://github.com/Z-Marta/NYC-MetroBus-Card.git`
-1. Navigate to the project directory:
+1. Navigate to the project directory: <br />
 `cd NYC-MetroBus-Card`
 ### Setup
-1. Run the program:
+1. Run the program: <br />
 `python NYCMetroBus_Card_Price_Calculator.py`
 1. Follow the on-screen prompts to simulate the MetroCard Vending Machine process.
 
