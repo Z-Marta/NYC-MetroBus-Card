@@ -1,0 +1,1 @@
+![NYC MetroCard Vending Machine](https://github.com/Z-Marta/NYC-MetroBus-Card/media/vending_machine.jpg)
