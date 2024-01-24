@@ -1,9 +1,7 @@
  # NYC MetroCard Vending Machine
 
-<p align="center">
-  <img src="https://github.com/Z-Marta/NYC-MetroBus-Card/blob/main/Media/vending_machine.jpg" 
-alt="NYC MetroCard Vending Machine" width="300">
-</p>
+<img src="https://github.com/Z-Marta/NYC-MetroBus-Card/blob/main/Media/Metrocard.jpg" 
+alt="NYC MetroCard Vending Machine in the Terminal">
 
 ## Description
 
@@ -33,3 +31,8 @@ alt="Invalide input insert in the Terminal ">
 1. Fork the repository.
 1. Make your changes and test them.
 1. Create a pull request with a clear description of your changes.
+
+<p align="center">
+  <img src="https://github.com/Z-Marta/NYC-MetroBus-Card/blob/main/Media/vending_machine.jpg" 
+alt="NYC MetroCard Vending Machine" width="300">
+</p>
